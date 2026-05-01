@@ -62,12 +62,14 @@ export function Step1Sector({ onSelect, selectedId }: Step1SectorProps) {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="space-y-8"
     >
-      <div className="text-center mb-10">
-        <h3 className="text-3xl sm:text-4xl font-display font-bold text-white mb-3">What are you looking to build?</h3>
-        <p className="text-slate-400 text-lg">Select the primary use-case for your project.</p>
+      <div className="text-center mb-8 sm:mb-10">
+        <h3 className="text-3xl sm:text-4xl font-display font-bold text-white mb-3 leading-tight">
+          What are you looking to build?
+        </h3>
+        <p className="text-slate-400 text-base sm:text-lg">Select the primary use-case for your project.</p>
       </div>
 
-      <div className="grid sm:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
         {projectSectors.map((sector) => {
           const isSelected = selectedId === sector.id;
 
@@ -75,9 +77,9 @@ export function Step1Sector({ onSelect, selectedId }: Step1SectorProps) {
             <button
               key={sector.id}
               onClick={() => onSelect(sector)}
-              className={`relative p-8 border text-left flex flex-col items-center sm:items-start text-center sm:text-left transition-all duration-300 group ${
+              className={`relative p-6 sm:p-8 border text-left flex flex-col items-center sm:items-start text-center sm:text-left transition-all duration-300 min-h-[120px] group ${
                 isSelected
-                  ? "bg-white/10 border-amber-500 shadow-[0_0_20px_rgba(212,175,55,0.15)] text-white"
+                  ? "bg-white/10 border-amber-500 shadow-[0_0_20px_rgba(212,175,55,0.15)] text-white scale-[1.02]"
                   : "bg-white/5 border-white/10 hover:border-amber-500 hover:bg-white/10 text-slate-300 hover:text-white"
               }`}
             >

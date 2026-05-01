@@ -168,7 +168,7 @@ export function SmartEstimator() {
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 py-4">
               <input
                 type="range"
                 min="50"
@@ -176,7 +176,8 @@ export function SmartEstimator() {
                 step="50"
                 value={data.area}
                 onChange={(e) => setData({ ...data, area: parseInt(e.target.value) })}
-                className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer accent-accent"
+                className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer accent-accent my-4"
+                style={{ minHeight: "44px" }}
               />
               <div className="flex justify-between text-xs text-primary-foreground/40 font-mono">
                 <span>50 SQM</span>
@@ -222,7 +223,7 @@ export function SmartEstimator() {
                       setData({ ...data, finish: item.grade as FinishGrade });
                       setTimeout(() => handleNext(), 300);
                     }}
-                    className={`p-6 border text-left flex flex-col transition-all ${
+                    className={`p-6 border text-left flex flex-col transition-all min-h-[80px] sm:min-h-auto ${
                       isSelected
                         ? "bg-secondary/80 border-accent shadow-[0_0_15px_rgba(176,141,87,0.2)]"
                         : "bg-secondary/30 border-primary-foreground/10 hover:border-primary-foreground/30 hover:bg-secondary/50"
@@ -388,16 +389,16 @@ export function SmartEstimator() {
 
       {/* Step Indicator (hide on loading and results) */}
       {step > 0 && step < 4 && (
-        <div className="px-8 pt-8 relative z-10 flex items-center justify-center gap-2">
+        <div className="px-4 pb-2 pt-8 sm:px-8 relative z-10 flex items-center justify-center gap-2">
           {[1, 2, 3].map((s) => (
-            <div key={s} className="flex flex-col items-center gap-2 w-16">
+            <div key={s} className="flex flex-col items-center gap-2 w-12 sm:w-16">
               <div
                 className={`h-1 w-full rounded-full transition-colors ${s <= step ? "bg-accent" : "bg-primary-foreground/10"}`}
               />
               <span
-                className={`text-[10px] font-bold uppercase tracking-widest ${s === step ? "text-accent" : "text-primary-foreground/30"}`}
+                className={`text-[10px] font-bold uppercase tracking-widest ${s === step ? "text-accent" : "text-primary-foreground/30 hidden sm:block"}`}
               >
-                Step {s}
+                {s === step ? `Step ${s}` : s}
               </span>
             </div>
           ))}
@@ -405,7 +406,7 @@ export function SmartEstimator() {
       )}
 
       {/* Dynamic Content Area */}
-      <div className="p-8 sm:p-12 relative z-10 min-h-[450px] flex flex-col justify-center">
+      <div className="p-4 sm:p-8 lg:p-12 relative z-10 min-h-[450px] flex flex-col justify-center">
         <AnimatePresence mode="wait">{renderStepContent()}</AnimatePresence>
       </div>
 

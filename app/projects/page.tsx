@@ -97,18 +97,18 @@ export default function ProjectsPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/20 border border-accent/50 text-accent text-sm font-medium tracking-widest uppercase mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/20 border border-accent/50 text-accent text-xs sm:text-sm font-medium tracking-widest uppercase mb-6">
               The Proof
             </div>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-display font-bold mb-6 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold mb-4 sm:mb-6 tracking-tight leading-tight">
               Engineered <br />{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-600">
                 to Scale.
               </span>
             </h1>
-            <p className="text-lg text-primary-foreground/70 max-w-2xl">
+            <p className="text-base sm:text-lg text-primary-foreground/70 max-w-2xl">
               We don&apos;t just build structures; we deliver predictable, high-value assets. Review our completed
               portfolio categorized by sector, value, and precise completion metrics.
             </p>
@@ -117,14 +117,14 @@ export default function ProjectsPage() {
       </section>
 
       {/* Filter and Grid Area */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Filters */}
-        <div className="flex flex-wrap items-center gap-4 mb-16 border-b border-stone-200 pb-8">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-10 sm:mb-16 border-b border-stone-200 pb-6 sm:pb-8">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-3 text-sm font-bold uppercase tracking-widest transition-all rounded-sm ${
+              className={`px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-bold uppercase tracking-widest transition-all rounded-sm min-h-[44px] ${
                 activeCategory === cat
                   ? "bg-primary text-primary-foreground shadow-md"
                   : "bg-white text-stone-500 border border-stone-200 hover:border-primary hover:text-primary"
