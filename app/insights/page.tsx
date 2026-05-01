@@ -48,11 +48,11 @@ export default function InsightsPage() {
                   Industry Intelligence
                 </span>
               </div>
-              <h1 className="text-5xl sm:text-6xl font-display font-bold text-primary mb-6 tracking-tight leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-primary mb-4 tracking-tight leading-[1.1]">
                 Data-driven strategy for <br />
                 <span className="text-stone-400">capital-intensive builds.</span>
               </h1>
-              <p className="text-lg text-stone-600">
+              <p className="text-base sm:text-lg text-stone-600">
                 Access our proprietary cost indices, execution frameworks, and architectural whitepapers designed for
                 enterprise developers and high-net-worth operators.
               </p>

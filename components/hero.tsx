@@ -64,7 +64,7 @@ export function Hero() {
             <span className="w-2 h-2 rounded-full bg-warning animate-pulse" />
             Next-Gen Construction Platform
           </div>
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-primary-foreground leading-[1.1] tracking-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-primary-foreground leading-[1.1] tracking-tight mb-6">
             Build with <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-600">Precision.</span>
           </h1>
@@ -130,13 +130,13 @@ export function Hero() {
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: "100%" }}
-            transition={{ duration: 1.5, ease: "circOut", delay: 0.5 }}
+            transition={{ duration: 1.2, ease: "circOut", delay: 0.3 }}
             className="absolute top-1/4 right-0 h-[1px] bg-accent/30"
           />
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: "60%" }}
-            transition={{ duration: 1.5, ease: "circOut", delay: 0.7 }}
+            transition={{ duration: 1.2, ease: "circOut", delay: 0.5 }}
             className="absolute bottom-1/4 right-0 h-[1px] bg-accent/30"
           />
 

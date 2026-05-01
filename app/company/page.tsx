@@ -70,20 +70,20 @@ export default function CompanyPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary-foreground/20 text-accent text-sm font-medium tracking-widest uppercase mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary-foreground/20 text-accent text-xs sm:text-sm font-medium tracking-widest uppercase mb-4 sm:mb-6 mt-4 md:mt-0">
               Risk Management First
             </div>
-            <h1 className="text-5xl sm:text-6xl font-display font-bold mb-6 tracking-tight leading-[1.1]">
-              Reliability is our <br />
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-4 sm:mb-6 tracking-tight leading-[1.1]">
+              Reliability is our <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-600">
                 Primary Material.
               </span>
             </h1>
-            <p className="text-lg text-primary-foreground/70 max-w-xl">
+            <p className="text-base sm:text-lg text-primary-foreground/70 max-w-xl">
               We protect capital allocation through rigorous safety protocols, proactive risk mitigation, and unyielding
               adherence to architectural integrity.
             </p>
@@ -92,15 +92,15 @@ export default function CompanyPage() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="grid grid-cols-2 gap-4"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
             {capabilities.map((item, idx) => {
               const Icon = item.icon;
               return (
                 <div
                   key={idx}
-                  className="bg-secondary/40 border border-primary-foreground/10 p-6 flex flex-col justify-center backdrop-blur-sm"
+                  className="bg-secondary/40 border border-primary-foreground/10 p-6 flex flex-col justify-center backdrop-blur-sm min-h-[140px]"
                 >
                   <Icon className="w-8 h-8 text-accent mb-4" />
                   <div className="text-3xl font-display font-bold text-white mb-1">{item.metric}</div>
