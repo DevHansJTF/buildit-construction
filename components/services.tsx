@@ -2,11 +2,13 @@
 
 import { motion } from "motion/react";
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 export function Services() {
   const packages = [
     {
       title: "Commercial Fit-Out",
+      sector: "commercial",
       price: "15,000",
       unit: "/ sqm",
       timeline: "45-90 Days",
@@ -21,6 +23,7 @@ export function Services() {
     },
     {
       title: "Premium Residential",
+      sector: "residential",
       price: "35,000",
       unit: "/ sqm",
       timeline: "6-8 Months",
@@ -35,6 +38,7 @@ export function Services() {
     },
     {
       title: "Industrial Facility",
+      sector: "industrial",
       price: "22,000",
       unit: "/ sqm",
       timeline: "5-10 Months",
@@ -50,9 +54,9 @@ export function Services() {
   ];
 
   return (
-    <section id="packages" className="py-32 bg-stone-100">
+    <section id="packages" className="py-16 sm:py-32 bg-stone-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-20 gap-8">
           <div className="max-w-2xl">
             <h2 className="text-sm font-bold uppercase tracking-widest text-accent mb-3">Productized Builds</h2>
             <h3 className="text-4xl md:text-5xl font-display font-bold text-primary mb-6">Transparent Baselines.</h3>
@@ -61,9 +65,12 @@ export function Services() {
               costs and standard timelines before we sit down at the drafting table.
             </p>
           </div>
-          <button className="whitespace-nowrap px-6 py-3 bg-primary text-primary-foreground font-bold tracking-widest uppercase text-sm hover:bg-secondary transition-colors border border-transparent">
+          <Link
+            href="/packages"
+            className="whitespace-nowrap px-6 py-3 bg-primary text-primary-foreground font-bold tracking-widest uppercase text-sm hover:bg-secondary transition-colors border border-transparent flex justify-center items-center"
+          >
             Download Pricing Matrix
-          </button>
+          </Link>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -113,15 +120,16 @@ export function Services() {
               </div>
 
               <div className="mt-auto">
-                <button
-                  className={`w-full py-4 text-sm font-bold uppercase tracking-widest transition-colors ${
+                <Link
+                  href={`/packages?sector=${pkg.sector}`}
+                  className={`w-full py-4 text-sm font-bold uppercase tracking-widest transition-colors flex justify-center items-center ${
                     pkg.highlight
                       ? "bg-accent text-primary-foreground hover:bg-yellow-600"
                       : "bg-stone-100 text-primary hover:bg-stone-200"
                   }`}
                 >
                   Select Package
-                </button>
+                </Link>
               </div>
             </motion.div>
           ))}

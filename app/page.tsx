@@ -14,7 +14,7 @@ export default function Home() {
       <Services />
 
       {/* Smart Estimator Section directly integrated or embedded near CTA */}
-      <section className="bg-primary pt-24 pb-12 relative px-4 sm:px-6 lg:px-8">
+      <section id="quote" className="bg-primary pt-16 sm:pt-24 pb-0 sm:pb-12 relative px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <SmartEstimator />
         </div>

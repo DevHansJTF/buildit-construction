@@ -2,7 +2,18 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Building2, Home, Factory, ArrowRight, Lock, FileText, CheckCircle, Calculator } from "lucide-react";
+import {
+  Building2,
+  Home,
+  Factory,
+  ArrowRight,
+  Lock,
+  FileText,
+  CheckCircle,
+  Calculator,
+  ArrowLeft,
+  X,
+} from "lucide-react";
 import { SpecsDrawer } from "@/components/specs-drawer";
 import { Step1Sector, type ProjectSector } from "@/components/step1-sector";
 
@@ -51,6 +62,7 @@ export function SmartEstimator() {
     monthsHigh: number;
   } | null>(null);
   const [isSpecsOpen, setIsSpecsOpen] = useState(false);
+  const [isCancelConfirmOpen, setIsCancelConfirmOpen] = useState(false);
 
   const calculateEstimate = () => {
     if (!data.type || !data.finish || !data.baseRate) return;
@@ -99,16 +111,16 @@ export function SmartEstimator() {
             initial="initial"
             animate="enter"
             exit="exit"
-            className="text-center py-12"
+            className="text-center py-8 sm:py-12"
           >
-            <Calculator className="w-12 h-12 text-accent mx-auto mb-8" />
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6 tracking-tight">
+            <Calculator className="w-12 h-12 text-accent mx-auto mb-6 sm:mb-8" />
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-4 sm:mb-6 tracking-tight">
               Stop Guessing. <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-stone-100 to-stone-400">
                 Calculate Your Build.
               </span>
             </h2>
-            <p className="text-lg text-primary-foreground/70 max-w-2xl mx-auto mb-10">
+            <p className="text-base sm:text-lg text-primary-foreground/70 max-w-2xl mx-auto mb-8 sm:mb-10">
               Use our interactive estimator to input your project specs and instantly receive a verified cost bracket
               and timeline projection based on current material indices.
             </p>
@@ -121,16 +133,18 @@ export function SmartEstimator() {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
 
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-6 opacity-60 grayscale">
-              <div className="text-xs font-bold uppercase tracking-widest">Certified By:</div>
-              <div>
-                <span className="font-display font-bold">CIAP</span>
-              </div>
-              <div>
-                <span className="font-display font-bold">PCAB AAAA</span>
-              </div>
-              <div>
-                <span className="font-display font-bold">ISO 9001</span>
+            <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-6 opacity-60 grayscale border-t border-primary-foreground/10 pt-8 sm:pt-12">
+              <div className="text-xs font-bold uppercase tracking-widest text-primary-foreground">Certified By:</div>
+              <div className="flex flex-wrap justify-center gap-6">
+                <div>
+                  <span className="font-display font-bold">CIAP</span>
+                </div>
+                <div>
+                  <span className="font-display font-bold">PCAB AAAA</span>
+                </div>
+                <div>
+                  <span className="font-display font-bold">ISO 9001</span>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -387,9 +401,66 @@ export function SmartEstimator() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
       )}
 
+      {/* Navigation Controls */}
+      {step > 0 && (
+        <div className="absolute top-0 left-0 right-0 p-4 sm:p-6 z-20 flex justify-between items-center pointer-events-none">
+          {(step > 0 && step < 4) || step === 5 ? (
+            <button
+              onClick={() => {
+                if (step === 5) {
+                  setStep(3);
+                } else {
+                  setStep((prev) => prev - 1);
+                }
+              }}
+              className="text-xs font-bold uppercase tracking-widest text-primary-foreground/50 hover:text-white transition-colors flex items-center gap-2 pointer-events-auto group"
+            >
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />{" "}
+              {step === 5 ? "Edit Inputs" : "Back"}
+            </button>
+          ) : (
+            <div />
+          )}
+
+          {step > 0 &&
+            step !== 4 &&
+            (isCancelConfirmOpen ? (
+              <div className="flex items-center gap-3 pointer-events-auto bg-primary border border-primary-foreground/10 px-3 py-2 -my-2 shadow-xl whitespace-nowrap">
+                <span className="text-xs font-bold uppercase tracking-widest text-primary-foreground/70 hidden sm:inline">
+                  Cancel estimate?
+                </span>
+                <button
+                  onClick={() => {
+                    setIsCancelConfirmOpen(false);
+                    setStep(0);
+                    setData({ type: null, baseRate: 0, area: 500, finish: null, name: "", email: "" });
+                  }}
+                  className="text-xs font-bold uppercase tracking-widest text-accent hover:text-white transition-colors"
+                >
+                  Yes
+                </button>
+                <span className="text-primary-foreground/30">/</span>
+                <button
+                  onClick={() => setIsCancelConfirmOpen(false)}
+                  className="text-xs font-bold uppercase tracking-widest text-primary-foreground/50 hover:text-white transition-colors"
+                >
+                  No
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setIsCancelConfirmOpen(true)}
+                className="text-xs font-bold uppercase tracking-widest text-primary-foreground/50 hover:text-red-400 transition-colors flex items-center gap-2 pointer-events-auto group"
+              >
+                Close <X className="w-4 h-4 group-hover:rotate-90 transition-transform" />
+              </button>
+            ))}
+        </div>
+      )}
+
       {/* Step Indicator (hide on loading and results) */}
       {step > 0 && step < 4 && (
-        <div className="px-4 pb-2 pt-8 sm:px-8 relative z-10 flex items-center justify-center gap-2">
+        <div className="px-4 pb-2 pt-16 sm:px-8 relative z-10 flex items-center justify-center gap-2">
           {[1, 2, 3].map((s) => (
             <div key={s} className="flex flex-col items-center gap-2 w-12 sm:w-16">
               <div
@@ -410,7 +481,13 @@ export function SmartEstimator() {
         <AnimatePresence mode="wait">{renderStepContent()}</AnimatePresence>
       </div>
 
-      <SpecsDrawer isOpen={isSpecsOpen} onClose={() => setIsSpecsOpen(false)} />
+      <SpecsDrawer
+        isOpen={isSpecsOpen}
+        onClose={() => setIsSpecsOpen(false)}
+        activeSector={
+          data.type ? (data.type.toLowerCase() as "commercial" | "residential" | "industrial") : "commercial"
+        }
+      />
     </div>
   );
 }
