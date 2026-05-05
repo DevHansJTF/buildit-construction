@@ -162,7 +162,7 @@ export default function CompanyPage() {
 
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-stone-300 md:-translate-x-1/2" />
+            <div className="absolute left-[27px] md:left-1/2 top-0 bottom-0 w-px bg-stone-300 -translate-x-1/2" />
 
             <div className="space-y-16">
               {timeline.map((event, idx) => {
@@ -173,14 +173,14 @@ export default function CompanyPage() {
                     className={`relative flex flex-col md:flex-row items-center ${isEven ? "md:flex-row-reverse" : ""}`}
                   >
                     {/* Dot */}
-                    <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full border-2 border-accent bg-white md:-translate-x-1/2 z-10" />
+                    <div className="absolute left-[27px] md:left-1/2 w-4 h-4 rounded-full border-2 border-accent bg-white -translate-x-1/2 z-10" />
 
                     <motion.div
                       initial={{ opacity: 0, x: isEven ? 30 : -30 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-50px" }}
                       transition={{ duration: 0.5 }}
-                      className={`w-full md:w-1/2 pl-12 md:pl-0 ${isEven ? "md:text-left md:pr-16 md:pl-16" : "md:text-right md:pr-16 md:pl-16"}`}
+                      className={`w-full md:w-1/2 pl-20 md:pl-0 ${isEven ? "md:text-left md:pr-16 md:pl-16" : "md:text-right md:pr-16 md:pl-16"}`}
                     >
                       <div className="text-3xl font-display font-bold text-primary/20 mb-2">{event.year}</div>
                       <h4 className="text-xl font-bold text-primary mb-3">{event.title}</h4>

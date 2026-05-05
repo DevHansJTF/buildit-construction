@@ -45,9 +45,9 @@ export function Lifecycle() {
   const pathProgress = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
 
   return (
-    <section id="process" className="py-32 bg-white relative">
+    <section id="process" className="py-16 sm:py-32 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={containerRef}>
-        <div className="text-center max-w-3xl mx-auto mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-24">
           <h2 className="text-sm font-bold uppercase tracking-widest text-accent mb-3">E2E Execution</h2>
           <h3 className="text-4xl md:text-5xl font-display font-bold text-primary mb-6">The BuildIt Lifecycle</h3>
           <p className="text-lg text-secondary/80">
@@ -66,7 +66,7 @@ export function Lifecycle() {
             style={{ scaleY: pathProgress }}
           />
 
-          <div className="space-y-24">
+          <div className="space-y-16 sm:space-y-24">
             {steps.map((step, index) => {
               const isEven = index % 2 === 0;
               const Icon = step.icon;
@@ -77,7 +77,7 @@ export function Lifecycle() {
                   className={`relative flex flex-col md:flex-row items-center ${isEven ? "md:flex-row-reverse" : ""} gap-8 md:gap-16`}
                 >
                   {/* Timeline Node */}
-                  <div className="absolute left-0 md:left-1/2 top-0 md:top-1/2 w-14 h-14 bg-white border-4 border-stone-200 rounded-full flex items-center justify-center -translate-x-1/2 md:-translate-y-1/2 z-10">
+                  <div className="absolute left-[27px] md:left-1/2 top-0 md:top-1/2 w-14 h-14 bg-white border-4 border-stone-200 rounded-full flex items-center justify-center -translate-x-1/2 md:-translate-y-1/2 z-10">
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
 
@@ -87,7 +87,7 @@ export function Lifecycle() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
-                    className={`w-full md:w-1/2 pl-20 md:pl-0 ${isEven ? "md:text-left md:pr-16" : "md:text-right md:pl-16"}`}
+                    className={`w-full md:w-1/2 pl-20 md:pl-0 ${isEven ? "md:text-left md:pl-20 lg:pl-24" : "md:text-right md:pr-20 lg:pr-24"}`}
                   >
                     <div className="inline-block text-accent font-mono font-bold tracking-wider mb-2">
                       PHASE {step.id}

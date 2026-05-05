@@ -38,7 +38,7 @@ export function Header() {
             href="/#quote"
             className="hidden lg:flex items-center justify-center px-6 py-2.5 bg-accent text-primary-foreground font-medium text-sm tracking-wide hover:bg-accent/90 transition-all rounded-sm uppercase min-h-[44px]"
           >
-            Start a Blueprint
+            Get an Estimate
           </Link>
 
           {/* Mobile Menu Toggle */}
@@ -96,7 +96,7 @@ export function Header() {
                 onClick={() => setIsOpen(false)}
                 className="flex items-center text-accent hover:text-warning transition-colors py-4 mt-2 min-h-[44px]"
               >
-                Start a Blueprint
+                Get an Estimate
               </Link>
             </nav>
           </motion.div>

@@ -2,21 +2,20 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { X, Check } from "lucide-react";
-import { packageData, SpecCategory } from "@/lib/package-data";
+import { packageData, SpecCategory, IndustryType } from "@/lib/package-data";
 
 interface SpecsDrawerProps {
   isOpen: boolean;
   onClose: () => void;
+  activeSector?: IndustryType;
 }
 
-export function SpecsDrawer({ isOpen, onClose }: SpecsDrawerProps) {
-  const categories: SpecCategory[] = [
-    "Flooring",
-    "Electrical & Smart Tech",
-    "Kitchen/Pantry",
-    "Bathrooms",
-    "Paint/Finishing",
-  ];
+export function SpecsDrawer({ isOpen, onClose, activeSector = "commercial" }: SpecsDrawerProps) {
+  const currentPackages = packageData[activeSector] || packageData["commercial"];
+
+  if (!currentPackages || !Array.isArray(currentPackages)) {
+    return null; // fallback if packageData isn't structured correctly
+  }
 
   return (
     <AnimatePresence>
@@ -59,7 +58,7 @@ export function SpecsDrawer({ isOpen, onClose }: SpecsDrawerProps) {
 
             {/* Matrix Content */}
             <div className="p-4 sm:p-6 space-y-8 sm:space-y-12">
-              {packageData.map((pkg) => (
+              {currentPackages.map((pkg) => (
                 <div key={pkg.grade} className="bg-secondary/20 border border-primary-foreground/10 p-4 sm:p-6">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-primary-foreground/10 pb-4 mb-6 gap-2">
                     <h4 className="text-xl font-display font-bold text-primary-foreground">{pkg.grade} Finish</h4>
@@ -69,13 +68,13 @@ export function SpecsDrawer({ isOpen, onClose }: SpecsDrawerProps) {
                   </div>
 
                   <div className="space-y-8">
-                    {categories.map((cat) => (
-                      <div key={cat}>
+                    {pkg.specs.map((specGroup) => (
+                      <div key={specGroup.category}>
                         <h5 className="text-xs font-bold uppercase tracking-widest text-primary-foreground/50 mb-3">
-                          {cat}
+                          {specGroup.category}
                         </h5>
                         <ul className="space-y-3">
-                          {pkg.specs[cat].map((spec, idx) => (
+                          {specGroup.items.map((spec: string, idx: number) => (
                             <li
                               key={idx}
                               className="flex items-start gap-3 text-sm text-primary-foreground/80 leading-relaxed"

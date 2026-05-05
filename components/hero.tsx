@@ -4,8 +4,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, Building2, Home, Landmark, type LucideIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
-type Industry = "commercial" | "residential" | "infrastructure";
+type Industry = "commercial" | "residential" | "industrial";
 
 const industries: Record<Industry, { title: string; desc: string; icon: LucideIcon; image: string }> = {
   commercial: {
@@ -20,7 +21,7 @@ const industries: Record<Industry, { title: string; desc: string; icon: LucideIc
     icon: Home,
     image: "https://picsum.photos/seed/res/1920/1080",
   },
-  infrastructure: {
+  industrial: {
     title: "Infrastructure & Industrial",
     desc: "Heavy-duty engineering solutions and logistics facilities.",
     icon: Landmark,
@@ -59,16 +60,17 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
+          className="pb-12 lg:pb-0 pt-8 lg:pt-0"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/20 border border-accent/30 text-accent text-sm font-medium tracking-widest uppercase mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/20 border border-accent/30 text-accent text-sm font-medium tracking-widest uppercase mb-6 sm:mb-8">
             <span className="w-2 h-2 rounded-full bg-warning animate-pulse" />
             Next-Gen Construction Platform
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-primary-foreground leading-[1.1] tracking-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-primary-foreground leading-[1.1] tracking-tight mb-4 sm:mb-6">
             Build with <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-600">Precision.</span>
           </h1>
-          <p className="text-lg text-muted max-w-xl mb-12">
+          <p className="text-base sm:text-lg text-muted max-w-xl mb-8 sm:mb-12">
             We replace ambiguity with engineering rigor. Explore our productized build packages with transparent
             pricing, guaranteed timelines, and enterprise-grade execution.
           </p>
@@ -92,13 +94,9 @@ export function Hero() {
                         : "bg-primary/50 border-primary-foreground/10 hover:border-primary-foreground/30 hover:bg-secondary/40"
                     }`}
                   >
-                    {isSelected && (
-                      <motion.div
-                        layoutId="active-indicator"
-                        className="absolute top-0 left-0 w-full h-[2px] bg-accent"
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
-                    )}
+                    <span
+                      className={`absolute top-0 left-0 w-full h-[2px] transition-opacity duration-300 ${isSelected ? "bg-accent opacity-100" : "bg-transparent opacity-0"}`}
+                    />
                     <Icon className={`w-6 h-6 mb-3 ${isSelected ? "text-accent" : "text-muted"}`} />
                     <h3
                       className={`font-display font-bold text-sm tracking-wide ${isSelected ? "text-primary-foreground" : "text-muted"}`}
@@ -115,10 +113,13 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               className="pt-6"
             >
-              <button className="flex items-center gap-3 bg-white text-primary px-8 py-4 font-bold uppercase tracking-widest text-sm hover:bg-stone-200 transition-colors w-full sm:w-auto justify-center group">
+              <Link
+                href={`/packages?sector=${selected}`}
+                className="flex items-center gap-3 bg-white text-primary px-8 py-4 font-bold uppercase tracking-widest text-sm hover:bg-stone-200 transition-colors w-full sm:w-auto justify-center group"
+              >
                 Explore {industries[selected].title} Packages
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
