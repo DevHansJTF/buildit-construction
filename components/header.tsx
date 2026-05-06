@@ -3,10 +3,15 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { HardHat, Menu, X } from "lucide-react";
+import { useLenis } from "lenis/react";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const lenis = useLenis();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground border-b border-primary/20 backdrop-blur-md bg-opacity-95">
@@ -31,16 +36,12 @@ export function Header() {
           <Link href="/packages" className="hover:text-warning transition-colors">
             Packages
           </Link>
+          <Link href="/contact" className="hover:text-warning transition-colors">
+            Contact
+          </Link>
         </nav>
 
         <div className="flex items-center gap-4">
-          <Link
-            href="/#quote"
-            className="hidden lg:flex items-center justify-center px-6 py-2.5 bg-accent text-primary-foreground font-medium text-sm tracking-wide hover:bg-accent/90 transition-all rounded-sm uppercase min-h-[44px]"
-          >
-            Get an Estimate
-          </Link>
-
           {/* Mobile Menu Toggle */}
           <button
             className="md:hidden p-2 text-primary-foreground/80 hover:text-white transition-colors"
@@ -92,11 +93,11 @@ export function Header() {
                 Packages
               </Link>
               <Link
-                href="/#quote"
+                href="/contact"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center text-accent hover:text-warning transition-colors py-4 mt-2 min-h-[44px]"
+                className="flex items-center hover:text-accent transition-colors py-4 min-h-[44px]"
               >
-                Get an Estimate
+                Contact
               </Link>
             </nav>
           </motion.div>

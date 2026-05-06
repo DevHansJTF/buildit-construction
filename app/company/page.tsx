@@ -10,21 +10,21 @@ const leaders = [
     name: "Marcus Vanguard",
     role: "Chief Engineer & CEO",
     experience: "25+ Years",
-    image: "https://picsum.photos/seed/marcus/400/500",
+    image: "ceo.jpg",
     accreditation: "P.E., M.ASCE",
   },
   {
     name: "Elena Sterling",
     role: "VP of Pre-Construction",
     experience: "18+ Years",
-    image: "https://picsum.photos/seed/elena/400/500",
+    image: "vp.jpg",
     accreditation: "AIA, LEED AP",
   },
   {
     name: "David Chen",
     role: "Director of Field Operations",
     experience: "20+ Years",
-    image: "https://picsum.photos/seed/david/400/500",
+    image: "dfo.jpg",
     accreditation: "OSHA 500, PMP",
   },
 ];
@@ -131,7 +131,7 @@ export default function CompanyPage() {
                 className="group border border-stone-200"
               >
                 <div className="relative h-[400px] w-full bg-stone-100 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
-                  <Image fill src={leader.image} alt={leader.name} className="object-cover" unoptimized />
+                  <Image fill src={leader.image} alt={leader.name} className="object-cover object-top" unoptimized />
                 </div>
                 <div className="p-6 bg-white flex flex-col items-center text-center">
                   <h4 className="text-xl font-display font-bold text-primary mb-1">{leader.name}</h4>

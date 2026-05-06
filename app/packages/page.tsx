@@ -135,20 +135,6 @@ export default function PackagesPage(props: { searchParams?: Promise<{ sector?: 
                   ))}
                 </div>
               </div>
-
-              {/* Call to Action Footer */}
-              <div className="p-6 sm:p-8 pt-0 mt-auto">
-                <Link
-                  href="/#quote"
-                  className={`w-full py-4 text-sm font-bold uppercase tracking-widest transition-colors min-h-[44px] flex items-center justify-center ${
-                    idx === 1
-                      ? "bg-accent text-primary-foreground hover:bg-yellow-600 active:bg-yellow-700"
-                      : "bg-stone-100 text-primary hover:bg-stone-200 active:bg-stone-300"
-                  }`}
-                >
-                  Base on {pkg.grade}
-                </Link>
-              </div>
             </motion.div>
           ))}
         </div>
