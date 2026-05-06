@@ -11,7 +11,7 @@ const resources = [
     title: "2026 Commercial Fit-Out Cost Index",
     type: "Market Report",
     readTime: "12 Min Read",
-    image: "https://picsum.photos/seed/report1/600/800",
+    image: "/commercial-office-space.jpg",
     desc: "A comprehensive breakdown of material costs, labor inflation, and time-to-delivery metrics for class-A office spaces.",
   },
   {
@@ -19,7 +19,7 @@ const resources = [
     title: "The Industrial Supply Chain Architect",
     type: "Whitepaper",
     readTime: "20 Min Read",
-    image: "https://picsum.photos/seed/report2/600/800",
+    image: "supply-chain.jpg",
     desc: "Optimizing logistics hubs for automation. How structural choices impact 10-year operational costs in heavy industry.",
   },
   {
@@ -27,7 +27,7 @@ const resources = [
     title: "Navigating Municipal Permits",
     type: "Execution Guide",
     readTime: "8 Min Read",
-    image: "https://picsum.photos/seed/report3/600/800",
+    image: "municipal-permits.jpg",
     desc: "Our proprietary pre-construction checklist for accelerating zoning approvals and environmental compliance.",
   },
 ];

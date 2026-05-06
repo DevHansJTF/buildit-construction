@@ -13,19 +13,19 @@ const industries: Record<Industry, { title: string; desc: string; icon: LucideIc
     title: "Commercial & Office Spaces",
     desc: "High-performance workspaces and retail environments built for scale.",
     icon: Building2,
-    image: "https://picsum.photos/seed/comm/1920/1080",
+    image: "/commercial-space.jpg",
   },
   residential: {
     title: "Premium Residential",
     desc: "Bespoke architectural homes with transparent timelines and fixed pricing.",
     icon: Home,
-    image: "https://picsum.photos/seed/res/1920/1080",
+    image: "/premium-residential.jpg",
   },
   industrial: {
     title: "Infrastructure & Industrial",
     desc: "Heavy-duty engineering solutions and logistics facilities.",
     icon: Landmark,
-    image: "https://picsum.photos/seed/infra/1920/1080",
+    image: "/infrastructure-industrial.jpg",
   },
 };
 

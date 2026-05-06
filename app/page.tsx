@@ -3,7 +3,6 @@ import { Hero } from "@/components/hero";
 import { Lifecycle } from "@/components/lifecycle";
 import { Services } from "@/components/services";
 import { CtaSection } from "@/components/cta";
-import { SmartEstimator } from "@/components/smart-estimator";
 
 export default function Home() {
   return (
@@ -12,13 +11,6 @@ export default function Home() {
       <Hero />
       <Lifecycle />
       <Services />
-
-      {/* Smart Estimator Section directly integrated or embedded near CTA */}
-      <section id="quote" className="bg-primary pt-16 sm:pt-24 pb-0 sm:pb-12 relative px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <SmartEstimator />
-        </div>
-      </section>
 
       <CtaSection />
 
